@@ -26,7 +26,7 @@ const MemorySchema = new Schema(
       type: String,
       required: true,
     },
-    description: {
+    favorite: {
       type: Boolean,
     },
     comments: [commentSchema],
