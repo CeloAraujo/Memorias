@@ -20,13 +20,24 @@ const createMemory = async (req, res) => {
 
     await newMemory.save();
 
-    res.json({msg:"Memória criada com sucesso!",newMemory})
+    res.json({ msg: "Memória criada com sucesso!", newMemory });
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Ocorreu algum erro!");
   }
 };
 
+const getMemories = async (req, res) => {
+  try {
+    const memories = await Memory.find();
+
+    res.json(memories);
+  } catch (error) {
+    res.status(500).send("Ocorreu um erro!");
+  }
+};
+
 module.exports = {
   createMemory,
+  getMemories,
 };
