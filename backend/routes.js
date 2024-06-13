@@ -7,6 +7,7 @@ const upload = require("./helpers/upload");
 const {
   createMemory,
   getMemories,
+  getMemory,
 } = require("./controllers/MemoryControllers");
 
 router.post(
@@ -26,6 +27,7 @@ router.post(
   (req, res) => createMemory(req, res)
 );
 
-router.get("/", (req, res) => getMemories(req,res));
+router.get("/", (req, res) => getMemories(req, res));
+router.get("/:id", (req, res) => getMemory(req, res));
 
 module.exports = router;
