@@ -1,0 +1,26 @@
+.addmemory-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh;
+}
+
+.addmemory-page h2{
+    padding: 2rem 0 1rem;
+    text-align: center;
+    font-size: 1.9rem;
+}
+
+.addmemory-page form {
+    max-width: 500px;
+}
+
+.addmemory-page p{
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.btn{
+   margin: 1rem auto ;
+}
