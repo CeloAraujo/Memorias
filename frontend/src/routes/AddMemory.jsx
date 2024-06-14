@@ -2,12 +2,24 @@ import { useState } from "react";
 import axios from "../axios-config";
 
 import "./AddMemory.css";
+
+import { toast } from "react-toastify";
+
+import { useNavigate } from "react-router-dom";
+
 const AddMemory = () => {
   const [inputs, setinputs] = useState({});
   const [image, setImage] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!inputs.title || !inputs.description) {
+      toast.error("Preencha os campos corretamente!");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("image", image);
@@ -18,8 +30,11 @@ const AddMemory = () => {
       const response = await axios.post("/memories", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      toast.success(response.data.msg);
+      navigate("/");
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data.msg);
     }
   };
 
@@ -41,7 +56,6 @@ const AddMemory = () => {
             type="text"
             placeholder="Define seu título"
             name="title"
-            required
             onChange={handleChange}
           />
         </label>
@@ -50,7 +64,6 @@ const AddMemory = () => {
           <textarea
             placeholder="Fale sobre sua memória"
             name="description"
-            required
             onChange={handleChange}
           ></textarea>
         </label>
