@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://memorias-i0e9.onrender.com/memories";
+axios.defaults.baseURL = "https://memorias-i0e9.onrender.com/";
 
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
