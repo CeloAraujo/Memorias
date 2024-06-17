@@ -36,7 +36,7 @@ const Home = () => {
       const res = await axios.delete(`/memories/${id}`);
 
       if (res.status === 200) {
-        setMemories(memories.filter(memory => memory._id !== id));
+        setMemories(memories.filter((memory) => memory._id !== id));
         navigate("/");
         toast.success(res.data.msg);
       }
@@ -45,7 +45,9 @@ const Home = () => {
       if (error.response) {
         console.error("Erro resposta:", error.response);
         toast.error(
-          `Erro: ${error.response.status} - ${error.response.statusText} - ${error.response.data.msg || error.response.data}`
+          `Erro: ${error.response.status} - ${error.response.statusText} - ${
+            error.response.data.msg || error.response.data
+          }`
         );
       } else if (error.request) {
         console.error("Erro requisição:", error.request);
@@ -56,7 +58,6 @@ const Home = () => {
       }
     }
   };
-  
 
   return (
     <div className="home">
